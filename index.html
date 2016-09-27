@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>WTM Templates</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.css" rel="stylesheet" /> 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="app/core/core.js"></script>
+    <script src="app/selector/mailSelector.service.js"></script>
+    <script src="app/selector/mailSelector.component.js"></script>
+  </head>
+  <body ng-app="mailApp" ng-controller="coreController as coreCtrl" class="row column">
+
+    <h1>WTM Communications Mail Templates</h1>
+    <p>A webapp meant as a tool for Warp To Me Communciations Department in creating mails for Denial, Review, and Removal mails.</p>
+
+    <mail-selector type="coreCtrl.mailType"></mail-selector>
+    <mail-selector type="coreCtrl.recipientType"></mail-selector>
+
+    <footer>
+      <hr />
+      <div class="row">
+        <div class="medium-4 columns">
+          &copy;2016 Foshkey<br />
+          <a target="_blank" href="https://github.com/Foshkey/wtm-mail-templates/blob/master/LICENSE">MIT License</a><br />
+        </div>
+      <div class="medium-4 columns">
+        <hr class="show-for-small-only" />
+        <strong>Built With</strong><br />
+          <a target="_blank" href="https://angularjs.org">AngularJS</a><br />
+          <a target="_blank" href="http://foundation.zurb.com/">Foundation 6 CSS</a><br />
+        </div>
+      <div class="medium-4 columns">
+        <hr class="show-for-small-only" />
+        <a target="_blank" href="https://github.com/Foshkey/wtm-mail-templates">GitHub Repository</a>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>

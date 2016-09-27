@@ -1,0 +1,8 @@
+<div class="button-group">
+  <a class="button"
+  ng-repeat="(key, value) in $ctrl.types"
+  ng-class="{ 'hollow': !$ctrl.isSelected(key) }"
+  ng-click="$ctrl.select(key)">
+    {{value}}
+  </a>
+</div>
