@@ -1,14 +1,14 @@
 var types = {
   mail: {
-    denial: "Denial",
-    review: "Review",
-    removal: "Removal" 
+    denial: { key: 0, display: "Denial" },
+    review: { key: 1, display: "Review" },
+    removal: { key: 2, display: "Removal" }, 
   },
   recipient: {
-    trainingFC: "Training Fleet Commander",
-    resident: "Resident",
-    fleetCommander: "Fleet Commander",
-    logiMaster: "Logi Master"
+    trainingFC: { key: 0, display: "Training Fleet Commander", showOnMailType: [0,1,2] },
+    resident: { key: 1, display: "Resident", showOnMailType: [0,1,2] },
+    fleetCommander: { key: 2, display: "Fleet Commander", showOnMailType: [1,2] },
+    logiMaster: {key: 3, display: "Logi Master", showOnMailType: [1,2] }
   }
 };
 
