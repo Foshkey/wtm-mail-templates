@@ -6,6 +6,8 @@
     <script src="app/core/core.js"></script>
     <script src="app/selector/mailSelector.service.js"></script>
     <script src="app/selector/mailSelector.component.js"></script>
+    <script src="app/editor/mailEditor.service.js"></script>
+    <script src="app/editor/mailEditor.component.js"></script>
   </head>
   <body ng-app="mailApp" ng-controller="coreController as coreCtrl" class="row column">
 
@@ -14,6 +16,10 @@
 
     <mail-selector type="coreCtrl.mailType"></mail-selector>
     <mail-selector type="coreCtrl.recipientType"></mail-selector>
+
+    <mail-editor></mail-editor>
+
+    <button class="large button">Create Mail</button>
 
     <footer>
       <hr />

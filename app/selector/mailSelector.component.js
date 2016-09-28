@@ -13,26 +13,26 @@
 
     ctrl.types = function () {
       let ctrlTypes = {};
-      let mailSelection = mailSelectorService.type.mail;
-      Object.keys(types[ctrl.type]).forEach(function (type) {
-        if (types[ctrl.type][type].showOnMailType) {
-          if (types[ctrl.type][type].showOnMailType.indexOf(mailSelection.key) >= 0) {
-            ctrlTypes[type] = types[ctrl.type][type];
+      if (ctrl.type == "recipient") {
+        Object.keys(mailSelectorService.types[ctrl.type]).forEach(function (typePropertyKey) {
+          let currentType = mailSelectorService.types[ctrl.type][typePropertyKey];
+          if (mailSelectorService.selectedType.mail.recipientTypes.indexOf(currentType.key) >= 0) {
+            ctrlTypes[typePropertyKey] = currentType;
           }
-        }
-        else {
-          ctrlTypes[type] = types[ctrl.type][type];
-        }
-      });
+        });
+      }
+      else if (ctrl.type == "mail") {
+        ctrlTypes = mailSelectorService.types[ctrl.type];
+      }
       return ctrlTypes;
     };
 
     ctrl.isSelected = function (key) {
-      return mailSelectorService.type[ctrl.type] === types[ctrl.type][key];
+      return mailSelectorService.selectedType[ctrl.type] === mailSelectorService.types[ctrl.type][key];
     }
 
     ctrl.select = function (key) {
-      mailSelectorService.type[ctrl.type] = types[ctrl.type][key];
+      mailSelectorService.selectType(ctrl.type, mailSelectorService.types[ctrl.type][key]);
     }
   }]);
 
