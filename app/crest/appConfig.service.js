@@ -6,13 +6,15 @@
     // Config
     function init() {
       serv.clientId = "6419217e48b44d2291083f679b4158eb",
+      serv.encodedAuthHeader = "",
       serv.currentScope = [
         serv.availableScopes.remoteClientUI
       ];
     }
 
-    // Client Id
+    // Client Id & Secret Key
     serv.clientId = "";
+    serv.encodedAuthHeader = "";
 
     // Scope
     serv.currentScope = [];

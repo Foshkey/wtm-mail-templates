@@ -1,12 +1,13 @@
 (function () {
   angular.module("eveCrest")
-  .service("authenticationService", ["$httpParamSerializer", "$location", "$window", "appConfigService", function ($httpParamSerializer, $location, $window, appConfigService) {
+  .service("authenticationService", ["$http", "$httpParamSerializer", "$location", "$window", "appConfigService", function ($http, $httpParamSerializer, $location, $window, appConfigService) {
     let serv = this;
 
     serv.authenticated = false;
     serv.authCode = "";
     serv.state = "";
     serv.accessToken = "";
+    serv.refreshToken = "";
 
     getAccessToken();
 
@@ -33,12 +34,35 @@
 
     function getAccessToken() {
       let routeParams = $location.search();
-
       if (!routeParams.code || !routeParams.state) return;
 
       serv.authCode = routeParams.code;
 
-      // To Be Continued...
+      // Doesn't work with cross origin... Bummer...
+
+      // let params = {
+      //   grant_type: "authorization_code",
+      //   code: serv.authCode
+      // };
+
+      // let config = {
+      //   method: "POST",
+      //   url: "https://login.eveonline.com/oauth/token",
+      //   headers: {
+      //     "Authorization": "Basic " + appConfigService.encodedAuthHeader,
+      //     "Content-Type": "application/x-www-form-urlencoded"
+      //   },
+      //   data: $httpParamSerializer(params)
+      // };
+
+      // console.log(config);
+
+      // $http(config).then(function (res) {
+      //   serv.accessToken = res.data.access_token;
+      //   serv.refreshToken = res.data.refresh_token;
+      //   serv.authenticated = true;
+      //   console.log(serv.accessToken);
+      // });
     }
 
   }]);
