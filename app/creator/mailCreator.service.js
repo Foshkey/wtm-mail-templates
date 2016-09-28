@@ -11,7 +11,5 @@
 
     }
 
-    $http.get("https://crest-tq.eveonline.com/incursions/");
-
   }])
 })()
