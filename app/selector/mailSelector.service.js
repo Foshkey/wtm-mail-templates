@@ -1,11 +1,9 @@
 (function () {
-  angular.module("mailApp").service("mailSelectorService", ["$http", function ($http) {
+  angular.module("mailApp").service("mailSelectorService", ["$http", "mailTemplateService", function ($http, mailTemplateService) {
     let serv = this;
 
     // Properties
     serv.selectedType = {}
-    serv.currentTemplate = { template: {} };
-    serv.cachedTemplates = {};
 
     serv.types = {
       mail: {
@@ -45,32 +43,16 @@
         }
       }
 
-      serv.setTemplate();
+      if (serv.selectedType.recipient) {
+        mailTemplateService.setTemplate(serv.selectedType.mail.key, serv.selectedType.recipient.key);
+      }
 
     }
 
     serv.selectRecipientType = function (type) {
       serv.selectedType.recipient = type;
-      serv.setTemplate();
-    }
-
-    serv.setTemplate = function () {
-      if (!serv.selectedType.mail || !serv.selectedType.recipient) return;
-
-      let mailType = serv.selectedType.mail.key;
-      let recipientType = serv.selectedType.recipient.key;
-      let templateUrl = "templates/" + mailType + "/" + recipientType;
-
-      if (!serv.cachedTemplates) serv.cachedTemplates = {};
-      if (!serv.cachedTemplates[mailType]) serv.cachedTemplates[mailType] = {};
-      if (!serv.cachedTemplates[mailType][recipientType]) {
-        $http.get(templateUrl).then(function (res) {
-          serv.cachedTemplates[mailType][recipientType] = { template: { text: res.data } };
-          serv.currentTemplate.template = serv.cachedTemplates[mailType][recipientType].template;
-        });
-      }
-      else {
-        serv.currentTemplate.template = serv.cachedTemplates[mailType][recipientType].template;
+      if (serv.selectedType.mail) {
+        mailTemplateService.setTemplate(serv.selectedType.mail.key, serv.selectedType.recipient.key);
       }
     }
 

@@ -4,8 +4,8 @@
     templateUrl: "app/editor/mailEditor.component.html",
     controller: "mailEditorController"
   })
-  .controller("mailEditorController", ["mailSelectorService", function (mailSelectorService) {
+  .controller("mailEditorController", ["mailTemplateService", function (mailTemplateService) {
     let ctrl = this;
-    ctrl.current = mailSelectorService.currentTemplate;
+    ctrl.current = mailTemplateService;
   }]);
 })();
