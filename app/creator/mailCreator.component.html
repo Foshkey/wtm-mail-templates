@@ -1,0 +1,14 @@
+<form name="$ctrl.Form" ng-submit="$ctrl.createMail()">
+  <label>Pilot Name
+    <input type="text" ng-model="$ctrl.pilotName" required>
+  </label>
+
+  <label>Mail Body
+    <textarea
+      ng-model="$ctrl.mailTemplateService.template.text"
+      rows="16">
+    </textarea>
+  </label>
+
+  <input type="submit" class="large button" value="Create Mail">
+</form>
