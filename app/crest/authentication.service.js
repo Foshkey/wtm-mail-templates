@@ -1,6 +1,6 @@
 (function () {
   angular.module("eveCrest")
-  .service("authenticationService", ["$httpParamSerializer", "$location", "$window", function ($httpParamSerializer, $location, $window) {
+  .service("authenticationService", ["$httpParamSerializer", "$location", "$window", "appConfigService", function ($httpParamSerializer, $location, $window, appConfigService) {
     let serv = this;
 
     serv.authenticated = false;
@@ -16,8 +16,8 @@
       let params = {
         response_type: "code",
         redirect_uri: $location.absUrl(),
-        client_id: "6419217e48b44d2291083f679b4158eb",
-        scope: "remoteClientUI",
+        client_id: appConfigService.clientId,
+        scope: appConfigService.getScopeString(),
         state: serv.state
       };
       let fullUrl = authUrl + "?" + $httpParamSerializer(params);
