@@ -1,6 +1,6 @@
 (function () {
   angular.module("mailApp")
-  .service("mailCreatorService", ["$http", function ($http) {
+  .service("mailCreatorService", ["$http", "authenticationService", function ($http, authenticationService) {
     let serv = this;
 
     serv.recipient = "";
@@ -8,7 +8,9 @@
     serv.body = "";
 
     serv.createMail = function (recipient, subject, body) {
-
+      if (!authenticationService.authenticated) {
+        authenticationService.authenticate();
+      }
     }
 
   }])
