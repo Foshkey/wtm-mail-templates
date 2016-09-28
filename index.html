@@ -17,9 +17,17 @@
     <mail-selector type="coreCtrl.mailType"></mail-selector>
     <mail-selector type="coreCtrl.recipientType"></mail-selector>
 
-    <mail-editor></mail-editor>
+    <form>
+      <label>Pilot Name
+        <input type="text" required>
+      </label>
 
-    <button class="large button">Create Mail</button>
+      <label>Mail Body
+        <mail-editor></mail-editor>
+      </label>
+
+      <input type="submit" class="large button" value="Create Mail">
+    </form>
 
     <footer>
       <hr />
