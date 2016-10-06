@@ -5,11 +5,10 @@ var availableScopes = require('./available-scopes');
 // ============================================================
 // APP CONFIG
 // ============================================================
-var clientId = '31389cdc5b8a42ef947a09d18fc24c69';
-var secretKey = 'WPuRO2JmN1WcqdRklGRQnWTu7frp1h2cjKXmDqQz';
+var clientId = '6419217e48b44d2291083f679b4158eb';
+var secretKey = 'B3Rulwdc2ZgPfgZls9kAu8ID2k26j9Y7zJ5GXyW3';
 var redirectUrl = 'http://localhost:3000';
 var scope = [
-  availableScopes.characterAccountRead,
   availableScopes.remoteClientUI
 ];
 
