@@ -26,12 +26,13 @@ module.exports = function (characterNames) {
       else {
         var charIdList = [];
         var rowset = result.eveapi.result[0].rowset[0].row;
-        console.log(rowset);
         rowset.forEach(function (row) {
-          charIdList.push({
-            name: row.$.name,
-            characterID: row.$.characterID
-          })
+          if (row.$.characterID !== '0') {
+            charIdList.push({
+              name: row.$.name,
+              characterID: +row.$.characterID
+            })
+          }
         })
         resolve(charIdList);
       }

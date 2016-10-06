@@ -3,6 +3,7 @@ var router = express.Router();
 
 var appConfig = require('../crest/app-config');
 var authService = require('../crest/auth/auth-service');
+var characterIds = require('../eve-api/character-ids');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -37,6 +38,12 @@ router.get('/', function(req, res, next) {
 
   }
 });
+
+// router.get('/test', function(req, res, next) {
+//   characterIds(['The Foshkey', 'Stasitic Solistor', 'Some other guy that does things']).then(function (result) {
+//     res.json(result);
+//   })
+// })
 
 router.get('/logout', function (req, res, next) {
   req.session.destroy();
