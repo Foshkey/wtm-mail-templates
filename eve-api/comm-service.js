@@ -1,6 +1,7 @@
 var https = require('https');
 var promise = require('promise');
 var querystring = require('querystring');
+var parseString = require('xml2js').parseString;
 
 function sendRequest(options, data) {
   return new promise(function (resolve, reject) {
@@ -14,12 +15,20 @@ function sendRequest(options, data) {
         console.log('Response:');
         console.log(chunk);
 
-        // Verify valid json
+        // Verify valid xml
         var resData;
-        try { resData = JSON.parse(chunk) }
+        try {
+          parseString(chunk, function (err, result) {
+            if (err) {
+              reject(err);
+            }
+            else {
+              resolve(result);
+            }
+          });
+        }
         catch (e) { reject('Unable to parse chunk\n' + chunk); }
 
-        resolve(resData);
       })
 
       // Catch errors in response
@@ -40,7 +49,7 @@ function sendRequest(options, data) {
     })
 
     // Write Data
-    if (options.headers['Content-Type'] === 'application/x-www-form-urlencoded') {
+    if (options.method === 'GET' || options.headers['Content-Type'] === 'application/x-www-form-urlencoded') {
       req.write(querystring.stringify(data || {}));
     }
     else {
