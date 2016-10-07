@@ -9,6 +9,7 @@ import { TemplateCollection } from '../models/template-collection';
 @Injectable()
 export class TemplateService {
 
+  display: { [key: string]: string } = {};
   subjects = new TemplateCollection();
   templates = new TemplateCollection();
 
@@ -16,6 +17,7 @@ export class TemplateService {
     private error: ErrorService,
     private http: Http
   ) {
+    this.getDisplay();
     this.getSubjects().then(subjects => {
       Object.keys(subjects).forEach(category => {
         Object.keys(subjects[category]).forEach(subCategory => {
@@ -53,6 +55,18 @@ export class TemplateService {
         let subjects = subjectsChunk.json();
         this.subjects = subjects;
         return Promise.resolve(subjects);
+      })
+      .catch(this.error.handleHttpError);
+  }
+
+  getDisplay(): Promise<{ [key: string]: string }> {
+    let displayUrl = 'templates/subjects.json';
+    return this.http.get(displayUrl)
+      .toPromise()
+      .then(displayChunk => {
+        let display = displayChunk.json();
+        this.display = display;
+        return Promise.resolve(display);
       })
       .catch(this.error.handleHttpError);
   }
