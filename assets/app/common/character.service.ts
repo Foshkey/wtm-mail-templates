@@ -4,6 +4,7 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { Character } from '../models/character';
+import { ErrorService } from './error.service';
 
 @Injectable()
 export class CharacterService {
@@ -12,6 +13,7 @@ export class CharacterService {
   private cachedCharacter: Character;
 
   constructor(
+    private error: ErrorService,
     private http: Http
   ) { }
 
@@ -26,12 +28,7 @@ export class CharacterService {
           this.cachedCharacter = response.json();
           return this.cachedCharacter;
         })
-        .catch(this.handleError);
+        .catch(this.error.handleHttpError);
     }
-  }
-  
-  private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error); // for demo purposes only
-    return Promise.reject(error.message || error);
   }
 }

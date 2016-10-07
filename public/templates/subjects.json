@@ -1,0 +1,18 @@
+{
+  "denial": {
+    "resident": "Resident Application - Denied",
+    "training-fc": "Training Fleet Commander Application - Denied"
+  },
+  "removal": {
+    "fleet-commander": "Fleet Commander Badge Removal",
+    "logi-master": "Logi Master Badge Removal",
+    "resident": "Resident Badge Removal",
+    "training-fc": "Training FC Badge Removal"
+  },
+  "review": {
+    "fleet-commander": "Fleet Commander Review",
+    "logi-master": "Logi Master Review",
+    "resident": "Resident Review",
+    "training-fc": "Training FC Review"
+  }
+}

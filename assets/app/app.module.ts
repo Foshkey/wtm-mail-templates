@@ -9,7 +9,9 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { AppRoutingModule } from './app.routing';
 
 import { CharacterService } from './common/character.service';
+import { ErrorService } from './common/error.service';
 import { OpenMailService } from './common/open-mail.service';
+import { TemplateService } from './common/template.service';
 
 @NgModule({
   imports: [
@@ -26,7 +28,9 @@ import { OpenMailService } from './common/open-mail.service';
   ],
   providers: [
     CharacterService,
-    OpenMailService
+    ErrorService,
+    OpenMailService,
+    TemplateService
   ],
   bootstrap: [AppComponent],
 })
