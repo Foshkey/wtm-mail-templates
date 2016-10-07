@@ -6,7 +6,7 @@ module.exports = function (characterNames) {
   return new promise(function (resolve, reject) {
 
     if (!characterNames || characterNames.length === 0) {
-      return reject('No character names were passed.');
+      return resolve([]);
     }
 
     var querystringNames = characterNames.map(function (name) {
