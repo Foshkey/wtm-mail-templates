@@ -1,0 +1,19 @@
+<form (ngSubmit)="onSubmit()" #mailForm="ngForm">
+  <div class="form-group">
+    <label for="recipients">Recipients</label>
+    <input type="text" class="form-control" id="recipients" name="recipients" [(ngModel)]="openMailService.recipients" />
+    <small class="form-text text-muted">Recipients are separated by commas (<code class="highlighter-rouge">,</code>). WTM Officer mailing list will automatically be included.</small>
+  </div>
+  <div class="form-group" *ngIf="templateService.subjects[templateService.selectedCategory]">
+    <label for="subject">Subject</label>
+    <input type="text" class="form-control" id="subject" name="subject"
+      [(ngModel)]="templateService.subjects[templateService.selectedCategory][templateService.selectedSubCategory]" />
+  </div>
+  <div class="form-group" *ngIf="templateService.templates[templateService.selectedCategory]">
+    <label for="body">Body</label>
+    <textarea class="form-control" id="body" name="body" rows="16"
+      [(ngModel)]="templateService.templates[templateService.selectedCategory][templateService.selectedSubCategory]">
+    </textarea>
+  </div>
+  <button type="submit" class="btn btn-outline-primary">Open Mail</button>
+</form>

@@ -12,6 +12,9 @@ export class TemplateService {
   display: { [key: string]: string } = {};
   subjects = new TemplateCollection();
   templates = new TemplateCollection();
+  
+  selectedCategory: string = "denial";
+  selectedSubCategory: string = "resident";
 
   constructor(
     private error: ErrorService,
@@ -60,7 +63,7 @@ export class TemplateService {
   }
 
   getDisplay(): Promise<{ [key: string]: string }> {
-    let displayUrl = 'templates/subjects.json';
+    let displayUrl = 'templates/display.json';
     return this.http.get(displayUrl)
       .toPromise()
       .then(displayChunk => {

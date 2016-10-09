@@ -2,7 +2,7 @@ var promise = require('promise');
 
 var charService = require('../char/char-service');
 var charIds = require('../../eve-api/character-ids');
-var commOpenMail = require('../comm/mock/open-mail');
+var commOpenMail = require('../comm/open-mail');
 
 var openMailWindow = function (req) {
 
