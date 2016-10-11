@@ -1,9 +1,7 @@
+import 'rxjs/add/operator/toPromise';
+import { ErrorService } from './error.service';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-
-import { ErrorService } from './error.service';
-
-import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class OpenMailService {
@@ -12,7 +10,7 @@ export class OpenMailService {
   subject: string;
   body: string;
 
-  private postMailUrl = 'api/open-mail'
+  private postMailUrl = 'api/open-mail';
 
   constructor(
     private error: ErrorService,
@@ -20,10 +18,10 @@ export class OpenMailService {
   ) { }
 
   postMail(): Promise<{}> {
-    var body: any = {
-      subject: this.subject,
-      body: this.body
-    }
+    let body: any = {
+      body: this.body,
+      subject: this.subject
+    };
     if (this.recipients) {
       body.recipients = this.recipients.split(',').map(value => value.trim());
     }

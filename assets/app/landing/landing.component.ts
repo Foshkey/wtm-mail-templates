@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-
 import { OpenMailService } from '../common/open-mail.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   moduleId: module.id,

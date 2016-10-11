@@ -6,7 +6,7 @@ export class ErrorService {
   constructor() { }
 
   handleHttpError(error: any): Promise<any> {
-    console.log(error);
+    console.error(error);
     return Promise.reject(error);
   }
 }

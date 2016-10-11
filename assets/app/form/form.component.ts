@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-
 import { OpenMailService } from '../common/open-mail.service';
 import { TemplateService } from '../common/template.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   moduleId: module.id,
@@ -18,8 +17,10 @@ export class FormComponent implements OnInit {
   ngOnInit() { }
 
   onSubmit() {
-    this.openMailService.subject = this.templateService.subjects[this.templateService.selectedCategory][this.templateService.selectedSubCategory];
-    this.openMailService.body = this.templateService.templates[this.templateService.selectedCategory][this.templateService.selectedSubCategory];
+    let cat = this.templateService.selectedCategory;
+    let subCat = this.templateService.selectedSubCategory;
+    this.openMailService.subject = this.templateService.subjects[cat][subCat];
+    this.openMailService.body = this.templateService.templates[cat][subCat];
     this.openMailService.postMail();
   }
 }

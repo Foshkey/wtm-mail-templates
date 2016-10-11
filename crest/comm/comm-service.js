@@ -11,7 +11,7 @@ function sendRequest(options, data) {
       res.on('data', function (chunk) {
 
         // Log it
-        console.log('Response:');
+        console.log('Response Chunk:');
         console.log(chunk);
 
         // Verify valid json
@@ -19,17 +19,18 @@ function sendRequest(options, data) {
         try { resData = JSON.parse(chunk) }
         catch (e) { reject('Unable to parse chunk\n' + chunk); }
 
-        resolve(resData);
+        return resolve(resData);
       })
 
       // Catch errors in response
       .on('error', function (error) {
-        reject(error);
+        return reject(error);
       })
 
       // And in case if successful call with no data
       .on('end', function () {
-        resolve();
+        console.log('Response Status: ' + res.statusCode + ' ' + res.statusMessage);
+        return resolve();
       });
 
     });

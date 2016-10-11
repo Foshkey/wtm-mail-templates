@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-
 import { TemplateService } from '../common/template.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   moduleId: module.id,

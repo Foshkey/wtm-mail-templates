@@ -1,10 +1,8 @@
+import 'rxjs/add/operator/toPromise';
+import { TemplateCollection } from '../models/template-collection';
+import { ErrorService } from './error.service';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-
-import 'rxjs/add/operator/toPromise';
-
-import { ErrorService } from './error.service';
-import { TemplateCollection } from '../models/template-collection';
 
 @Injectable()
 export class TemplateService {
@@ -12,9 +10,9 @@ export class TemplateService {
   display: { [key: string]: string } = {};
   subjects = new TemplateCollection();
   templates = new TemplateCollection();
-  
-  selectedCategory: string = "denial";
-  selectedSubCategory: string = "resident";
+
+  selectedCategory: string = 'denial';
+  selectedSubCategory: string = 'resident';
 
   constructor(
     private error: ErrorService,
@@ -36,8 +34,7 @@ export class TemplateService {
     }
     if (this.templates[category][subCategory]) {
       Promise.resolve(this.templates[category][subCategory]);
-    }
-    else {
+    } else {
       let templateUrl = `templates/${category}/${subCategory}`;
       return this.http.get(templateUrl)
         .toPromise()

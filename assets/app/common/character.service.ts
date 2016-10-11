@@ -1,10 +1,8 @@
-import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-
 import 'rxjs/add/operator/toPromise';
-
 import { Character } from '../models/character';
 import { ErrorService } from './error.service';
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
 
 @Injectable()
 export class CharacterService {
@@ -20,8 +18,7 @@ export class CharacterService {
   getChar(): Promise<Character> {
     if (this.cachedCharacter) {
       return new Promise<Character>(resolve => resolve(this.cachedCharacter));
-    }
-    else {
+    } else {
       return this.http.get(this.charUrl)
         .toPromise()
         .then(response => {
