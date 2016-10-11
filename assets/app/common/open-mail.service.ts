@@ -27,6 +27,12 @@ export class OpenMailService {
     }
     return this.http.post(this.postMailUrl, body)
       .toPromise()
+      .then(() => {
+        this.recipients = '';
+        this.subject = '';
+        this.body = '';
+        return Promise.resolve({});
+      })
       .catch(this.error.handleHttpError);
   }
 }

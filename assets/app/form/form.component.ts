@@ -21,6 +21,9 @@ export class FormComponent implements OnInit {
     let subCat = this.templateService.selectedSubCategory;
     this.openMailService.subject = this.templateService.subjects[cat][subCat];
     this.openMailService.body = this.templateService.templates[cat][subCat];
-    this.openMailService.postMail();
+    this.openMailService.postMail().then(() => {
+      this.templateService.getTemplate(cat, subCat);
+      this.templateService.getSubjects();
+    });
   }
 }

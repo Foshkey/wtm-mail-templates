@@ -32,19 +32,15 @@ export class TemplateService {
     if (!this.templates[category]) {
       this.templates[category] = {};
     }
-    if (this.templates[category][subCategory]) {
-      Promise.resolve(this.templates[category][subCategory]);
-    } else {
-      let templateUrl = `templates/${category}/${subCategory}`;
-      return this.http.get(templateUrl)
-        .toPromise()
-        .then(template => {
-          let templateText = template.text();
-          this.templates[category][subCategory] = templateText;
-          return Promise.resolve(templateText);
-        })
-        .catch(() => Promise.resolve(''));
-    }
+    let templateUrl = `templates/${category}/${subCategory}`;
+    return this.http.get(templateUrl)
+      .toPromise()
+      .then(template => {
+        let templateText = template.text();
+        this.templates[category][subCategory] = templateText;
+        return Promise.resolve(templateText);
+      })
+      .catch(() => Promise.resolve(''));
   }
 
   getSubjects(): Promise<TemplateCollection> {
