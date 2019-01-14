@@ -1,5 +1,10 @@
-# MEAN Seed
-Seed Project for MEAN Stack, now with Angular 2!
+# Archived
+
+This project has been archived and no longer maintained.
+
+# Mail Templates
+
+Quick webapp project meant to assist in mail templates for WarpToMe community.
 
 Built with:
 
